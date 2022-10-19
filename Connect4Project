@@ -1,0 +1,219 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+vector<char> h1, h2, h3, h4, h5, h6 = {};
+vector<char> r1, r2, r3, r4, r5, r6 = {};
+
+bool gameEnd = false;
+
+void initializeBoard() {
+  cout << "0 ";
+  
+  for (int i = 0; i < 7; i++) {
+     
+    h1.push_back('-');
+    h2.push_back('-');
+    h3.push_back('-');
+    h4.push_back('-');
+    h5.push_back('-');
+    h6.push_back('-');
+    r1.push_back('-');
+    r2.push_back('-');
+    r3.push_back('-');
+    r4.push_back('-');
+    r5.push_back('-');
+    r6.push_back('-');
+  }
+}
+
+void drawBoard() {
+  cout << "1 2 3 4 5 6 " << endl;
+  cout << "1";
+  cout << "  "; 
+  
+  for (int i = 1; i <= 7; i++)
+  {
+    cout << h1[i] << " ";
+  }
+  
+  cout << endl;
+    cout << "  "; 
+
+  for (int i = 1; i <= 7; i++) {
+    cout << h2[i] << " ";
+  }
+  cout << endl;
+      cout << "  "; 
+
+  for (int i = 1; i <= 7; i++) {
+    cout << h3[i] << " ";
+  }
+  cout << endl;
+      cout << "  "; 
+
+  for (int i = 1; i <= 7; i++) {
+    cout << h4[i] << " ";
+  }
+  cout << endl;
+      cout << "  "; 
+
+  for (int i = 1; i <= 7; i++) {
+    cout << h5[i] << " ";
+  }
+  cout << endl;
+      cout << "  "; 
+
+  for (int i = 1; i <= 7; i++) {
+    cout << h6[i] << " ";
+  }
+  cout << endl;
+}
+
+void playerOneTurn() {
+  cout << "Player 1: Enter a column: ";
+  int choice;
+  cin >> choice;
+
+  if (r6[choice] == '-') {
+    r6[choice] = 'X';
+  } else if (r5[choice] == '-') {
+    r5[choice] = 'X';
+  } else if (r4[choice] == '-') {
+    r4[choice] = 'X';
+  } else if (r3[choice] == '-') {
+    r3[choice] = 'X';
+  } else if (r2[choice] == '-') {
+    r2[choice] = 'X';
+  } else if (r1[choice] == '-') {
+    r1[choice] = 'X';
+  }
+  if (h6[choice] == '-') {
+    h6[choice] = 'X';
+  } else if (h5[choice] == '-') {
+    h5[choice] = 'X';
+  } else if (h4[choice] == '-') {
+    h4[choice] = 'X';
+  } else if (h3[choice] == '-') {
+    h3[choice] = 'X';
+  } else if (h2[choice] == '-') {
+    h2[choice] = 'X';
+  } else if (h1[choice] == '-') {
+    h1[choice] = 'X';
+  } else {
+    cout << endl << "INVALID COLUMN: Pick again\n\n";
+    playerOneTurn();
+  }
+}
+
+void playerTwoTurn() {
+  cout << "Player 2: Enter a column: ";
+  int choice;
+  cin >> choice;
+  if (h6[choice] == '-') {
+    h6[choice] = 'O';
+  } else if (h5[choice] == '-') {
+    h5[choice] = 'O';
+  } else if (h4[choice] == '-') {
+    h4[choice] = 'O';
+  } else if (h3[choice] == '-') {
+    h3[choice] = 'O';
+  } else if (h2[choice] == '-') {
+    h2[choice] = 'O';
+  } else if (h1[choice] == '-') {
+    h1[choice] = 'O';
+  } else {
+    cout << endl << "INVALID COLUMN: Pick again\n\n";
+    playerTwoTurn();
+  }
+}
+void verticalWin() {
+  for (int i = 0; i <= 4; i++) {
+  }
+}
+void horizontalWin() {
+  for (int i = 0; i <= 4; i++) {
+    if (h6[i] == h6[i + 1] && h6[i + 2] == h6[i + 3] && h6[i] == h6[i + 2] &&
+        h6[i + 2] == h6[i + 3]) {
+      if (h6[i] == 'X') {
+        cout << "player 1 wins" << endl;
+        gameEnd = true;
+      } else if (h6[i] == 'O') {
+        cout << "player 2 wins " << endl;
+        gameEnd = true;
+      }
+    }
+    if (h5[i] == h5[i + 1] && h5[i + 2] == h5[i + 3] && h5[i] == h5[i + 2] &&
+        h5[i + 2] == h5[i + 3]) {
+      if (h5[i] == 'X') {
+        cout << "player 1 wins" << endl;
+        gameEnd = true;
+      } else if (h5[i] == 'O') {
+        cout << "player 2 wins " << endl;
+        gameEnd = true;
+      }
+    }
+    if (h4[i] == h4[i + 1] && h4[i + 2] == h4[i + 3] && h4[i] == h4[i + 2] &&
+        h4[i + 2] == h4[i + 3]) {
+      if (h4[i] == 'X') {
+        cout << "player 1 wins" << endl;
+        gameEnd = true;
+      } else if (h4[i] == 'O') {
+        cout << "player 2 wins " << endl;
+        gameEnd = true;
+      }
+    }
+    if (h3[i] == h3[i + 1] && h3[i + 2] == h3[i + 3] && h3[i] == h3[i + 2] &&
+        h3[i + 2] == h3[i + 3]) {
+      if (h3[i] == 'X') {
+        cout << "player 1 wins" << endl;
+        gameEnd = true;
+      } else if (h3[i] == 'O') {
+        cout << "player 2 wins " << endl;
+        gameEnd = true;
+      }
+    }
+    if (h2[i] == h2[i + 1] && h2[i + 2] == h2[i + 3] && h2[i] == h2[i + 2] &&
+        h2[i + 2] == h2[i + 3]) {
+      if (h2[i] == 'X') {
+        cout << "player 1 wins" << endl;
+        gameEnd = true;
+      } else if (h2[i] == 'O') {
+        cout << "player 2 wins " << endl;
+        gameEnd = true;
+      }
+    }
+    if (h1[i] == h1[i + 1] && h1[i + 2] == h1[i + 3]) {
+      if (h1[i] == 'X') {
+        cout << "player 1 wins" << endl;
+        gameEnd = true;
+      } else if (h1[i] == 'O') {
+        cout << "player 2 wins " << endl;
+        gameEnd = true;
+      }
+    }
+  }
+}
+
+int main() {
+  initializeBoard();
+  while (gameEnd == false) {
+    drawBoard();
+    horizontalWin();
+    if (gameEnd == true) {
+      cout << "bye" << endl;
+      exit(0);
+    } else {
+      playerOneTurn();
+      drawBoard();
+      horizontalWin();
+      if (gameEnd == true) {
+        cout << "bye" << endl;
+        exit(0);
+      } else {
+        playerTwoTurn();
+      }
+    }
+  }
+}
